@@ -16,4 +16,4 @@ setup your databse
 After login, click on the campaign menu and then upload the file. Only name and email should be kept in the CSV file.
 then click to send campaign button to send your predefined template to user contact
 
-If you need CSV file then I have already uploaded a demo file in the project, you can download it
+If you need CSV file then I have already uploaded a demo file in the project, you can download it. [Click Here](https://github.com/Rohit4429/email-campaign-laravel-vue/blob/main/CSV_demo_data.csv)
