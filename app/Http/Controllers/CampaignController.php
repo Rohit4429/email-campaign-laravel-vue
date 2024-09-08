@@ -76,29 +76,21 @@ class CampaignController extends Controller
                         $name = $row[0] ?? null;
                         $email = $row[1] ?? null;
 
-                        $validator = Validator::make([
-                            'name' => $name,
-                            'email' => $email,
-                        ], [
-                            'name' => 'required',
-                            'email' => 'required|email',
-                        ]);
-
-                        if ($validator->fails()) {
-                            $errorMessages[] = [
-                                'row' => $row,
-                                'errors' => $validator->errors()
-                            ];
-                            continue;
+                        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                            return back()->withErrors(['email' => 'Invalid email format.']);
+                        }elseif(empty($email)){
+                            return back()->withErrors(['email' => 'Email is required']);
+                        }elseif(empty($name)){
+                            return back()->withErrors(['name' => 'Name is required']);
+                        }else{
+                            Contact::insert([
+                                'campaign_id' => $campaign->id,
+                                'name' => $name,
+                                'email' => $email,
+                                'status' => 1
+                            ]);
                         }
 
-
-                        Contact::insert([
-                            'campaign_id' => $campaign->id,
-                            'name' => $name,
-                            'email' => $email,
-                            'status' => 1
-                        ]);
                     }
 
                     fclose($file);

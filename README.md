@@ -9,6 +9,9 @@ setup your databse
 - php artisan migrate
 - php artisan db:seed
 
+Run queue
+- php artisan queue:work
+
 ## Login and Uses
 - Email :- admin@gmail.com
 - password :- password

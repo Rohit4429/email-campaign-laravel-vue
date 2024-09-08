@@ -51,6 +51,11 @@ const uploadCampaigns = () => {
                 form.reset('upload_csv');
                 uploadCsv.value?.focus();
             }
+            if (form.errors.email) {
+                form.reset('upload_csv');
+                errorMessage.value = form.errors.email;
+                errors.value = [];
+            }
         },
     });
 };
